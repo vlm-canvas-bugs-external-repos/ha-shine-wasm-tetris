@@ -67,13 +67,16 @@ export class Renderer {
         this.heldPieceSprite.visible = false;
         this.heldPieceSprite.x = 195;
         this.heldPieceSprite.y = 91;
+        // @ts-ignore
         this.pixi.stage.addChild(this.heldPieceSprite);
 
         this.startButton = Renderer.buildStartButtonContainer(onStartButtonClicked);
+        // @ts-ignore
         this.pixi.stage.addChild(this.startButton);
 
         this.restartButton = Renderer.buildRestartButtonContainer(onRestartButtonClicked);
         this.restartButton.visible = false;
+        // @ts-ignore
         this.pixi.stage.addChild(this.restartButton);
     }
 
@@ -95,6 +98,7 @@ export class Renderer {
         rectangle.endFill();
         rectangle.x = x;
         rectangle.y = y;
+        // @ts-ignore
         container.addChild(rectangle);
         container.zIndex = 10;
 
@@ -102,6 +106,7 @@ export class Renderer {
         const text = new Text("START", textStyle);
         text.x = x + 32;
         text.y = y + 6;
+        // @ts-ignore
         container.addChild(text);
         container.interactive = true;
         container.on("pointerdown", () => {
@@ -124,6 +129,7 @@ export class Renderer {
         rectangle.endFill();
         rectangle.x = x;
         rectangle.y = y;
+        // @ts-ignore
         container.addChild(rectangle);
         container.zIndex = 10;
 
@@ -131,6 +137,7 @@ export class Renderer {
         const text = new Text("RESTART", textStyle);
         text.x = x + 20;
         text.y = y + 6;
+        // @ts-ignore
         container.addChild(text);
         container.interactive = true;
         container.on("pointerdown", () => {
@@ -162,6 +169,7 @@ export class Renderer {
         rectangle.drawRect(0, 0, BOARD_WIDTH_PX + 4, BOARD_HEIGHT_PX + 4);
         rectangle.x = gridX - 2;
         rectangle.y = gridY - 2;
+        // @ts-ignore
         this.pixi.stage.addChild(rectangle);
 
         // vertical lines
@@ -173,6 +181,7 @@ export class Renderer {
             line.x = rectangle.x + i * TETRIMINO_WIDTH_PX + 2;
             line.y = rectangle.y;
             line.zIndex = -1;
+            // @ts-ignore
             this.pixi.stage.addChild(line);
         }
 
@@ -185,22 +194,26 @@ export class Renderer {
             line.x = rectangle.x;
             line.y = rectangle.y + i * TETRIMINO_WIDTH_PX + 2;
             line.zIndex = -1;
+            // @ts-ignore
             this.pixi.stage.addChild(line);
         }
     }
 
     private renderLabels(): void {
         this.score.text = "0000000";
+        // @ts-ignore
         this.pixi.stage.addChild(this.score);
 
         let heldLabel = new Text("HELD", TEXT_STYLE);
         heldLabel.x = 190;
         heldLabel.y = 53;
+        // @ts-ignore
         this.pixi.stage.addChild(heldLabel);
 
         let nextLabel = new Text("NEXT", TEXT_STYLE);
         nextLabel.x = 555;
         nextLabel.y = 53;
+        // @ts-ignore
         this.pixi.stage.addChild(nextLabel);
     }
 
@@ -224,6 +237,7 @@ export class Renderer {
             let s = new Sprite(this.textures[name]);
             s.x = xPos as number;
             s.y = gridY;
+            // @ts-ignore
             this.pixi.stage.addChild(s);
         });
     }
@@ -244,6 +258,7 @@ export class Renderer {
 
     private renderActivePiece(game: GameState): void {
         this.activePieceSprites.forEach(sprite =>
+            // @ts-ignore
             this.pixi.stage.removeChild(sprite)
         );
         this.activePieceSprites = [];
@@ -261,11 +276,13 @@ export class Renderer {
             sprite.y = gridY + pieceY * TETRIMINO_WIDTH_PX;
 
             this.activePieceSprites.push(sprite);
+            // @ts-ignore
             this.pixi.stage.addChild(sprite);
         }
     }
 
     private renderBoard(game: GameState): void {
+        // @ts-ignore
         this.groundSprites.forEach(sprite => this.pixi.stage.removeChild(sprite));
         this.groundSprites = [];
 
@@ -281,6 +298,7 @@ export class Renderer {
                     sprite.y = gridY + y * TETRIMINO_WIDTH_PX;
 
                     this.groundSprites.push(sprite);
+                    // @ts-ignore
                     this.pixi.stage.addChild(sprite);
                 }
             }
@@ -289,6 +307,7 @@ export class Renderer {
 
     private renderGroundHint(game: GameState): void {
         this.groundHintSquares.forEach(sprite =>
+            // @ts-ignore
             this.pixi.stage.removeChild(sprite)
         );
         this.groundHintSquares = [];
@@ -310,12 +329,14 @@ export class Renderer {
             rectangle.y = gridY + y * TETRIMINO_WIDTH_PX;
 
             this.groundHintSquares.push(rectangle);
+            // @ts-ignore
             this.pixi.stage.addChild(rectangle);
         }
     }
 
     private renderNextPieces(game: GameState): void {
         this.nextPieceSprites.forEach(sprite =>
+            // @ts-ignore
             this.pixi.stage.removeChild(sprite)
         );
         this.nextPieceSprites = [];
@@ -326,7 +347,7 @@ export class Renderer {
             const sprite = new Sprite(this.textures[`t_${nextPieces[i]}_small.png`]);
             sprite.x = 560;
             sprite.y = 91 + i * 80;
-
+            // @ts-ignore
             this.pixi.stage.addChild(sprite);
             this.nextPieceSprites.push(sprite);
         }

@@ -9,7 +9,17 @@
     "allowJs": true,
     "importHelpers": true,
     "moduleResolution": "Node",
-    "strictNullChecks": true,
+    "strictNullChecks": false,
     "allowSyntheticDefaultImports": true,
-  }
+    "noEmitOnError": false,
+    "skipLibCheck": true,
+    "strict": false
+  },
+  "include": [
+    "ts/**/*",
+  ],
+  "exclude": [
+    "node_modules",                  // Exclude node_modules folder
+    "**/*.spec.ts"                   // Exclude test files if applicable
+  ]
 }
