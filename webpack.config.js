@@ -42,8 +42,8 @@ module.exports = {
             {directory: path.resolve(__dirname, "static"), watch: true},
             {directory: path.resolve(__dirname, "rust/pkg"), watch: true},
         ],
-  	port: 9000, // Specify the port number
-  	open: true,  // This will automatically open the browser
+  	port: 8080, // Specify the port number
+  	open: false,  // This will automatically open the browser
   	hot: false,   // Enable hot module replacement
     },
     plugins: [

@@ -19,6 +19,8 @@ export class Application {
             antialias: true,
             view: canvas
         });
+        // @ts-ignore
+        window.__PIXI_APP__ = this.app;
 
         this.ticker = new PIXI.Ticker();
         this.ticker.autoStart = false;
